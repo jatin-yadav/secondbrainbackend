@@ -1,6 +1,7 @@
 import express from "express";
 import connectDB from "./db/connect";
 import * as dotenv from "dotenv";
+import { usersRouter } from "./routes/user.routes";
 
 dotenv.config();
 
@@ -8,11 +9,15 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json("Connected succesfully!");
+  res.json(
+    "Wellcome to My Secon Brain where you can store and manage your links"
+  );
 });
 
-app.post('/signup',(req,res)=>{})
-app.post('/login',(req,res)=>{})
+app.use("/api/v1/users", usersRouter);
+
+app.post("/signup", (req, res) => {});
+app.post("/login", (req, res) => {});
 
 const startServer = async () => {
   try {
