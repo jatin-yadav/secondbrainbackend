@@ -2,6 +2,7 @@ import express from "express";
 import connectDB from "./db/connect";
 import * as dotenv from "dotenv";
 import { usersRouter } from "./routes/user.routes";
+import { contentRouter } from "./routes/content.routes";
 
 dotenv.config();
 
@@ -14,10 +15,8 @@ app.get("/", (req, res) => {
   );
 });
 
-app.use("/api/v1/users", usersRouter);
-
-app.post("/signup", (req, res) => {});
-app.post("/login", (req, res) => {});
+app.use("/api/v1/user", usersRouter);
+app.use("/api/v1/content", contentRouter);
 
 const startServer = async () => {
   try {

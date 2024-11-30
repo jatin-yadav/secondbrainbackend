@@ -49,15 +49,15 @@ const express_1 = __importDefault(require("express"));
 const connect_1 = __importDefault(require("./db/connect"));
 const dotenv = __importStar(require("dotenv"));
 const user_routes_1 = require("./routes/user.routes");
+const content_routes_1 = require("./routes/content.routes");
 dotenv.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.get("/", (req, res) => {
     res.json("Wellcome to My Secon Brain where you can store and manage your links");
 });
-app.use("/api/v1/users", user_routes_1.usersRouter);
-app.post("/signup", (req, res) => { });
-app.post("/login", (req, res) => { });
+app.use("/api/v1/user", user_routes_1.usersRouter);
+app.use("/api/v1/content", content_routes_1.contentRouter);
 const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, connect_1.default)(process.env.MONGODB_URL);
