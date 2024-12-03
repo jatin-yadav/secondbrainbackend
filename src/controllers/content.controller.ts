@@ -14,9 +14,17 @@ export const createContent = async (
     //@ts-ignore
     userId: req.userId,
   };
-  console.log("contentData", contentData);
 
   const content = await Content.create(contentData);
 
   res.json({ message: "Content created successfully", content });
+};
+
+export const fetchContent = async (
+  req: Request<{}, {}, CreateContentDto>,
+  res: Response
+) => {
+  const content = await Content.find();
+
+  res.json({ message: "Content fetched successfully", content });
 };
