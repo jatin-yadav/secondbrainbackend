@@ -11,7 +11,6 @@ export const createContent = async (
     type: req.body.type,
     title: req.body.title,
     tags: req.body.tags,
-    //@ts-ignore
     userId: req.userId,
   };
 

@@ -14,8 +14,7 @@ export const verifyAuth = async (
   const existinguser = await User.findById(decoded.id as string);
 
   if (existinguser) {
-    //@ts-ignore
-    req.userId = existinguser._id;
+    req.userId = existinguser._id as unknown as string;
     next();
   } else {
     res.status(403).json({ message: "You are not logged In" });
